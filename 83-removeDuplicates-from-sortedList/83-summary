@@ -1,0 +1,80 @@
+// wrong solution 1
+Runtime Error Message:
+Line 14: java.lang.NullPointerException
+Last executed input:
+[1,1,2,3,3]
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode cur= new ListNode();
+        for(cur=head; cur.next!=null; cur=cur.next){
+            if(cur.val==cur.next.val ){
+                cur.next=cur.next.next;
+                
+            }
+        }
+        return head;
+        
+    }
+}
+
+//wrong solution 2
+Input:
+[1,1,1]
+Output:
+[1,1]
+Expected:
+[1]
+
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode cur= new ListNode();
+        for(cur=head; cur!=null && cur.next!=null; cur=cur.next){
+            if(cur.val==cur.next.val ){
+                cur.next=cur.next.next;
+            }
+            else{}
+        }
+        return head;
+        
+    }
+}
+
+
+
+
+//final solutioin
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+//be careful about line 15 cur!=null
+//be careful about the while loop
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode cur= new ListNode();
+        for(cur=head; cur!=null && cur.next!=null; cur=cur.next){
+            while(cur.next!=null && cur.val==cur.next.val){
+                cur.next=cur.next.next;
+            }        
+        }
+        return head;
+        
+    }
+}

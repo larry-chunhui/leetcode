@@ -1,0 +1,101 @@
+//1st error solution
+Runtime Error Message:
+Line 16: java.lang.NullPointerException
+Last executed input:
+[1]
+-1
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        ListNode fast=head;
+        ListNode slow=head;
+        while(fast.next.next!=null &&slow.next!=null){
+             fast=fast.next.next;
+            slow=slow.next;
+            if(fast==slow){
+                return true;
+            }
+        }
+        
+        return false;
+           
+        
+        
+        
+    }
+}
+
+//2nd error solution
+//test 1 succeed:
+Your input
+[1]
+-1
+Output
+false
+Expected
+false
+
+//test 2: failed
+input：
+[1,2,3]
+-1
+output：
+Runtime Error
+java.lang.NullPointerException
+  at line 17, Solution.hasCycle
+  at line 88, __Driver__.main
+  
+
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        if(head==null) return false;
+        ListNode fast=head;
+        ListNode slow=head;
+        while(slow.next!=null && fast.next.next!=null ){
+             fast=fast.next.next;
+            slow=slow.next;
+            if(fast==slow){
+                return true;
+            }
+        }    
+        return false;    
+    }
+}
+
+//final solution
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        if(head==null) return false;
+        ListNode fast=head;
+        ListNode slow=head;
+        while(fast.next!=null && fast.next.next!=null &&slow.next!=null){
+             fast=fast.next.next;
+            slow=slow.next;
+            if(fast==slow){
+                return true;
+            }
+        }    
+        return false;    
+    }
+}
